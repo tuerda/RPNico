@@ -1,4 +1,4 @@
-# RPNico RPN calculator#
+# RPNico RPN calculator #
 
 This is a double precision RPN calculator, written in Haskell.
 
