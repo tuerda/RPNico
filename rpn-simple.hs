@@ -5,9 +5,10 @@ import System.Exit (exitSuccess)
 data ShowMode = YesShow | NoShow deriving Eq
 
 main = do
-    putStrLn "Calculadora RPN interactiva, 2020, Nicolás Kuschinski"
-    putStrLn "Introducir contenido a calcular; cerrar con q"
-    putStrLn "Para desactivar muestra del stack usar \"-s\", para activarla \"s\""
+    putStrLn "RPNico interactive RPN calculator, 2020, Nicolás Kuschinski"
+    putStrLn "Simple version"
+    putStrLn "Type what you want to calculate, RPN notation; close with q"
+    putStrLn "To turn off showing the current state of the stack, type \"-s\", to activate, use \"s\""
     ciclo [] YesShow
 
 ciclo :: [String] -> ShowMode -> IO()
@@ -34,7 +35,6 @@ x `mod'` y = truncate x `mod` truncate y
 compressStack :: [String] -> [String]
 compressStack = reverse . foldl compressor []
     where
-    compressor (x:xs) "move" = moveUp (read x) xs -- Mover n elementos del stack al inicio. Para uso avanzado.
     compressor xs "sum" = show (sum $ map read' xs) : []
     compressor xs "prod" = show (product (map read' xs)) : []
     compressor xs "mean" = show (mean (map read' xs)) : []

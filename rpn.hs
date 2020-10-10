@@ -25,7 +25,7 @@ type Vars = [Variable] -- El estado son stacks y sus nombres.
 ----------------------
 
 main = do
-    putStrLn "RPN calculation language"
+    putStrLn "RPNico calculation language"
     putStrLn "Nicolás Kuschinski"
     ciclo [ Variable "main" [] ] YesShow --Empezamos con una variable llamada "main" que tiene un stack vacío
 
@@ -170,7 +170,7 @@ var xs = mean $ map (\x -> (x - laMedia) ** 2) xs -- Divide entre n, no entre (n
 moveUp :: Int -> [String] -> [String]
 moveUp n st = drop n st ++ take n st
 
-esNumero :: String -> Maybe Double
+esNumero :: String -> Maybe Double -- Manera de verificar si un string corresponde a un número
 esNumero x = readMaybe x
 
 esOrden x = x `elem` ["copy", "name", "swap", "del", "noeval"] -- Las ordenes para operar sobre stacks y no sobre números
