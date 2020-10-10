@@ -22,7 +22,7 @@ ciclo stack mode = do
     ciclo stackahora mode
 
 -- forzar a usar punto flotante al convertir a números
-read' :: String-> Float
+read' :: String-> Double
 read' = read
 
 -- Lo anterior obliga a definir división entera y módulos en puntos flotantes
