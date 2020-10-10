@@ -68,7 +68,7 @@ For simple functions this is not difficult, but the interface is a bit odd.
 
 The stacks have user defined names.
 Only the current working stack is ever shown.
-There is no limit to how many stacks can exit at once.
+There is no limit to how many stacks can exist at once.
 The default stack is named "main" unless this name is changed.
 
 Stacks do not always have to be evaluated.
@@ -98,6 +98,8 @@ The result would be less like a calculator and more like a programming language;
 #### Example session multiple stacks
 
 The following session uses 2 stacks, which are named "stack1" and "stack2". It showcases most of the commands (except `del`).
+
+Some operations are performed, and then the main stack is renamed stack1. A new stack is created named stack2, and it is used to write a function which adds 4 and then takes the sine of the result. This function is then applied to the last element in stack1. Further messing around with the stacks is then done just to showcase the functionality further.
 
 ```
 PN calculation language
