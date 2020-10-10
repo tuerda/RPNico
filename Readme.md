@@ -120,7 +120,7 @@ stack2 copy
 5 -0.2879033
 stack2 swap
 4 + sin
-1 copy
+stack1 copy
 4 + sin 5 -0.2879033
 stack1 swap
 5 -0.2879033
