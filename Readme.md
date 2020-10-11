@@ -102,8 +102,6 @@ The following session uses 2 stacks, which are named "stack1" and "stack2". It s
 Some operations are performed, and then the main stack is renamed stack1. A new stack is created named stack2, and it is used to write a function which adds 4 and then takes the sine of the result. This function is then applied to the last element in stack1. Further messing around with the stacks is then done just to showcase the functionality further.
 
 ```
-PN calculation language
-Nicolás Kuschinski
 5 4 8 +
 5 12.0
 stack1 name
