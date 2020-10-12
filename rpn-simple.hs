@@ -60,9 +60,6 @@ compressStack = reverse . foldl compressor []
     compressor nums "e"  = show (exp 1) : nums
     compressor nums num  = num:nums
 
-moveUp :: Int -> [String] -> [String]
-moveUp n st = drop n st ++ take n st
-
 mean xs = sum xs / (realToFrac $ length xs)
 
 var xs = mean $ map (\x -> (x - laMedia) **2) xs -- Divide entre n, no entre (n-1)

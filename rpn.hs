@@ -55,7 +55,7 @@ manejar [] vars = comprimeEsto [] vars
 
 manejar linea vars
     | esOrden $ last linea = Just $ handler linea vars
-    | esValido $ last linea = comprimeEsto linea vars -- Si no terminamos con una orden entonces solo procesamos como calculadora.
+    | all esValido linea = comprimeEsto linea vars -- Si no terminamos con una orden entonces solo procesamos como calculadora.
     | otherwise = Nothing
 
 handler :: Linea -> Vars -> Vars --Recibimos las instrucciones, dividimos en orden (si hay) y sobre qué operamos

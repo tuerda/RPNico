@@ -137,7 +137,6 @@ sum
 #### Problems
 
 - The simple version does no error checking and will crash if you input an illegal command.
-- For both versions, if you put something that doesn't parse in the middle of the stack, it will simply throw it into the stack. When an operation is applied to it, the program will crash (but you can still work on what comes after without crashing). This is easy to fix, and I will do so eventually.
 - Deleting the last stack crashes the program.
 
 #### To-do
