@@ -25,9 +25,13 @@ type Vars = [Variable] -- El estado son stacks y sus nombres.
 ----------------------
 
 main = do
+    imports <- getArgs
     putStrLn "RPNico calculation language"
     putStrLn "Nicolás Kuschinski"
-    ciclo [ Variable "main" [] ] YesShow --Empezamos con una variable llamada "main" que tiene un stack vacío
+    stacks <- importarArgumentos imports --Si se importa algún archivo
+    ciclo (Variable "main" []:stacks) YesShow --Empezamos con una variable llamada "main" que tiene un stack vacío
+
+
 
 ciclo :: Vars -> ShowMode -> IO()
 ciclo vars mode = do
@@ -41,9 +45,23 @@ ciclo vars mode = do
          Nothing -> ciclo vars mode
          (Just xs) -> ciclo xs mode
 
+-- Errores
 imprimir :: Maybe Vars -> IO()
 imprimir Nothing = putStrLn "Unrecognized command"
 imprimir (Just x) = putStrLn . unwords . getValue . head $ x
+
+-- Para importar archivos
+importarArgumentos :: [String] -> IO(Vars)
+importarArgumentos [] = return []
+importarArgumentos nombres = do
+    archivos <- mapM readFile nombres
+    let lineasarchivos = map lines archivos
+    return $ concat $ map importarArchivo lineasarchivos
+
+importarArchivo :: [String] -> Vars
+importarArchivo [] = []
+importarArchivo (x:[]) = []
+importarArchivo (nombre : contenido : xs) = Variable nombre (words contenido) : importarArchivo xs
 
 ---------------------------------------------
 -- Procesar ordenes

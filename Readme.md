@@ -95,6 +95,28 @@ With the exception of `move`, no stack commands are allowed inside of stacks.
 Allowing this could lead to recursion, loops, etc.
 The result would be less like a calculator and more like a programming language; I do not want to add memory management, ending conditions, or the possibility of going into an infinite loop, so this has deliberately not been implemented.
 
+#### Stacks in files
+
+You can write stacks into files to save data and/or functions for repeated use.
+
+The file can have any name.
+The structure for the files is:
+
+```
+name of first stack
+contents of first stack
+name of second stack
+contents of second stack
+.
+.
+.
+```
+
+There is no limit to how many stacks can be contained in a file.
+
+To import a file with stacks, simply use the filenames (or paths) as command line arguments.
+There is no limit to how many files you can import.
+
 #### Example session multiple stacks
 
 The following session uses 2 stacks, which are named "stack1" and "stack2". It showcases most of the commands (except `del`).
@@ -136,10 +158,21 @@ sum
 
 #### Problems
 
+##### Won't fix
 - The simple version does no error checking and will crash if you input an illegal command.
+
+##### Might fix
 - Deleting the last stack crashes the program.
+
+##### Will fix
+- There is no error checking when reading files from command line arguments. If a file doesn't exist, the program will crash. If a file has an odd number of lines, the program will simply assume that all but the last line are correctly formed and will import them. 
+
+--------------------------
 
 #### To-do
 
-- Command to import stacks from files.
+##### Will do
+- Comments in files.
+
+##### Might do
 - Command to save all current stacks to a file.
