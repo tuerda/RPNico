@@ -113,6 +113,8 @@ contents of second stack
 ```
 
 There is no limit to how many stacks can be contained in a file.
+Lines starting with `#` are comments.
+Blank lines and lines that begin with `#` are ignored.
 
 To import a file with stacks, simply use the filenames (or paths) as command line arguments.
 There is no limit to how many files you can import.
@@ -171,8 +173,4 @@ sum
 
 #### To-do
 
-##### Will do
-- Comments in files.
-
-##### Might do
 - Command to save all current stacks to a file.

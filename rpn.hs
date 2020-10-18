@@ -55,8 +55,11 @@ importarArgumentos :: [String] -> IO(Vars)
 importarArgumentos [] = return []
 importarArgumentos nombres = do
     archivos <- mapM readFile nombres
-    let lineasarchivos = map lines archivos
-    return $ concat $ map importarArchivo lineasarchivos
+    let lineasArchivos =  map lines archivos
+    return $ concat $ map archivoaVars lineasArchivos
+
+archivoaVars :: [String] -> Vars
+archivoaVars strs = importarArchivo $  filter (\x -> x /= "" && x !! 0 /='#') strs
 
 importarArchivo :: [String] -> Vars
 importarArchivo [] = []
