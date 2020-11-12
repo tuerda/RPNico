@@ -39,11 +39,19 @@ ciclo vars mode = do
     when (linea == "s") $ ciclo vars YesShow
     when (linea == "-s") $ ciclo vars NoShow
     when (linea == "q") exitSuccess
+    when (last (words linea) == "save") $ guardar (words linea) vars
     let estadoAhora = manejar (words linea) vars
     when (mode == YesShow) $ imprimir estadoAhora -- Muestra el primer stack o un error
     case estadoAhora of
          Nothing -> ciclo vars mode
          (Just xs) -> ciclo xs mode
+
+-- Guardar las variables en un archivo
+guardar :: Linea -> Vars -> IO()
+guardar (nombre:_) vars = writeFile nombre $ unlines $ map varAString vars
+
+varAString :: Variable -> String
+varAString var = getName var ++ "\n" ++ ( unwords $ getValue var )
 
 -- Errores
 imprimir :: Maybe Vars -> IO()
@@ -73,9 +81,9 @@ importarArchivo (nombre : contenido : xs) = Variable nombre (words contenido) : 
 -- manejar procesará las ordenes
 manejar :: Linea -> Vars -> Maybe Vars
 manejar [] vars = comprimeEsto [] vars
-
 manejar linea vars
     | esOrden $ last linea = Just $ handler linea vars
+    | last linea == "save" = Just vars
     | all esValido linea = comprimeEsto linea vars -- Si no terminamos con una orden entonces solo procesamos como calculadora.
     | otherwise = Nothing
 
