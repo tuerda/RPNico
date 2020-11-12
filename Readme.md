@@ -119,6 +119,9 @@ Blank lines and lines that begin with `#` are ignored.
 To import a file with stacks, simply use the filenames (or paths) as command line arguments.
 There is no limit to how many files you can import.
 
+To save all current stacks to a file, use `filename save`.
+Be careful because this can overwrite data!
+
 #### Example session multiple stacks
 
 The following session uses 2 stacks, which are named "stack1" and "stack2". It showcases most of the commands (except `del`).
@@ -170,7 +173,3 @@ sum
 - There is no error checking when reading files from command line arguments. If a file doesn't exist, the program will crash. If a file has an odd number of lines, the program will simply assume that all but the last line are correctly formed and will import them. 
 
 --------------------------
-
-#### To-do
-
-- Command to save all current stacks to a file.
