@@ -2,7 +2,7 @@
 -- Hace cálculos RPN manipulando múltiples stacks.
 
 -- import Control.Monad.State -- para tratar como estado los stacks ocultos
-import Data.List (findIndex)
+import Data.List (findIndex, foldl')
 import Control.Monad (when)
 import System.Exit (exitSuccess)
 import System.Environment (getArgs)
@@ -143,7 +143,7 @@ borrar st vars = case buscarIndice st vars of
 -- Realiza los cálculos en un stack específico:
 -- Pegar las ordenes al stack antes de llamar.
 compressStack :: Stack -> Stack
-compressStack = reverse . foldl compressor []
+compressStack = reverse . foldl' compressor []
     where
     compressor (x:xs) "move" = moveUp (read x) xs -- Mover n elementos del stack al inicio. Para uso avanzado.
     compressor xs "sum" = show (sum $ map read' xs) : []
